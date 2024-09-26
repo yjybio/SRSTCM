@@ -21,7 +21,7 @@
 #' @export
 #'
 #' @examples
-#' test.ScrSTCs <- ScrSTCs(data = data, cancer = "LUNG", type = "sc", survival = "", multi.sample = "FALSE", minGene = 500, maxGene = 5000, maxUMI = 40000, pctMT = 20, id.type = "S", cell.line = "no", ngene.chr = 5,  win.size = 25, KS.cut = 0.15, distance = "euclidean", n.cores = 1)
+#' test.ScrSTCs <- ScrSTCs(data = data, cancer = "LUNG", type = "sc", survival = survival, multi.sample = "FALSE", minGene = 500, maxGene = 5000, maxUMI = 40000, pctMT = 20, id.type = "S", cell.line = "no", ngene.chr = 5,  win.size = 25, KS.cut = 0.15, distance = "euclidean", n.cores = 1)
 ScrSTCs <- function (data, cancer, type, survival, multi.sample = "FALSE",
                      minGene = 500, maxGene = 5000, maxUMI = 40000,
                      pctMT = 20, id.type = "S", cell.line = "no", ngene.chr = 5,
