@@ -1,0 +1,26 @@
+Package: ScrSTCs
+Title: Inference of human senescent tumor cells from high-throughput single cell RNA-seq data based on senescence marker genes
+Version: 0.0.0.9000
+Authors@R: 
+       c(person(given = "Jiayi",
+                 family = "Yang",
+                 role =  c("aut")，
+                 email = "yjybio@163.com")
+Description: SCRSTCS is a computational tool using  marker genes of aging combined with multinomial distribution models and maximum likelihood function principles to identify senescent tumor cells in high-throughput single cell RNA-seq data.
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    copykat,
+    dplyr,
+    ggplot2,
+    harmony,
+    Hmisc,
+    patchwork,
+    pheatmap,
+    Seurat,
+    SeuratObject,
+    survival,
+    survminer
+LazyData: true
+VignetteBuilder: knitr
