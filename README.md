@@ -23,7 +23,7 @@ library("SeuratObject")
 library("survival")
 library("survminer")
 ```
-Step 2: Single-cell transcriptome data preprocessing
+Step 2: single-cell transcriptome data preprocessing
 --
 Single-cell sequencing data should be preprocessed before identifying senescent tumor cells in single-cell data. The single-cell sequencing data read by default is UMI count matrix generated from 10X output.<br>
 
@@ -38,7 +38,7 @@ data <- RunUMAP(data, reduction = "pca", dims = 1:10, reduction.name = "umap")
 data <- FindNeighbors(data, dims = 1:30)
 data <- FindClusters(data, res = 0.5)
 ```
-Step 3: Identify malignant cells in single-cell sequencing data
+Step 3: identify malignant cells in single-cell sequencing data
 --
 ```R
 tumor.cell <- as.matrix(data@assays$RNA@counts)
@@ -49,7 +49,7 @@ copykat.prediction <- read.table(res)
 copykat.prediction <- copykat.prediction[which(copykat.prediction[, 2] == "aneuploid"), ]
 copykat.prediction <- data@assays$RNA@counts[ ,which(colnames(data@assays$RNA@counts) %in% copykat.prediction[, 1])]
 ```
-Step 4: Running ScrSTCs
+Step 4: running ScrSTCs
 --
 Taking colorectal cancer as an example, the most important input data is the malignant cells obtained in the previous step, and the malignant cells mentioned above are extracted from the preprocessed single-cell data and recorded as copykat-prediction.<br>
 Then, the corresponding aging marker genes in colorectal cancer were extracted from the data, and senescent tumor cells in malignant cells were identified according to the maximum likelihood function principle according to the multinomial distribution model of colorectal cancer constructed by us.<br>
@@ -107,7 +107,7 @@ Plot the expression levels of the top ten differentially expressed genes in non-
 top10 <- mydeg %>% top_n(n = 10, wt = avg_log2FC) %>% row.names()
 VlnPlot(data, features = top10, split.by = 'cell.type', idents = 'NSTCs')  
 ```
-Step 5: If the data type is bulk, the aging score is calculated
+Step 5: if the data type is bulk, the aging score is calculated
 --
 For bulk data, we can calculate the aging score of each sample according to the multinomial distribution model. The likelihood function of the aging multinomial distribution model corresponding to each sample is used as the score to evaluate the aging degree of the sample.<br>
 
