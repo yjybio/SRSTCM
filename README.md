@@ -7,7 +7,7 @@ Step 1: installation
 Installing ScrSTCs from GitHub <br>
 ```R
 library(devtools) 
-install_github("navinlabcode/ScrSTCs")
+install_github("yjybio/ScrSTCs")
 ```
 We start by loading the packages needed for the analyses. Please install them if you haven't.<br>
 ```R
