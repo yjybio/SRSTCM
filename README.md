@@ -31,15 +31,11 @@ An example input 10x raw data matrix
 ```R
 data[["percent.mt"]] <- PercentageFeatureSet(data, pattern = "^MT-") 
 data[["percent.rb"]] <- PercentageFeatureSet(data, pattern = "^RP[SL]")
-data <- subset(data, subset = nCount_RNA < maxUMI & nFeature_RNA > minGene & 
-                        nFeature_RNA < maxGene & percent.mt < pctMT)
-data <- NormalizeData(data) %>% FindVariableFeatures(nfeatures = 
-			            ceiling(nrow(data@assays$RNA) * 0.3)) %>% ScaleData()
+data <- subset(data, subset = nCount_RNA < maxUMI & nFeature_RNA > minGene & nFeature_RNA < maxGene & percent.mt < pctMT)
+data <- NormalizeData(data) %>% FindVariableFeatures(nfeatures = ceiling(nrow(data@assays$RNA) * 0.3)) %>% ScaleData()
 data <- RunPCA(data, features = VariableFeatures(object = data), reduction.name = "pca")
-data <- RunUMAP(data, reduction = "pca", dims = 1:10, reduction.name = "umap_naive")
-data <- RunHarmony(data, reduction = "pca", group.by.vars = "orig.ident", reduction.save = "harmony")
-data <- RunUMAP(data, reduction = "harmony", dims = 1:30,reduction.name = "umap")
-data <- FindNeighbors(data, reduction = "harmony", dims = 1:30)
+data <- RunUMAP(data, reduction = "pca", dims = 1:10, reduction.name = "umap")
+data <- FindNeighbors(data, dims = 1:30)
 data <- FindClusters(data, res = 0.5)
 ```
 Step 3: Identify malignant cells in single-cell sequencing data
