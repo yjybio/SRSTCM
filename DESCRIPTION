@@ -19,5 +19,3 @@ Imports:
     SeuratObject,
     survival,
     survminer
-LazyData: true
-VignetteBuilder: knitr
