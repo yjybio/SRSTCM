@@ -29,8 +29,6 @@ Single-cell sequencing data should be preprocessed before identifying senescent 
 
 An example input 10x raw data matrix
 ```R
-data[["percent.mt"]] <- PercentageFeatureSet(data, pattern = "^MT-") 
-data[["percent.rb"]] <- PercentageFeatureSet(data, pattern = "^RP[SL]")
 data <- subset(data, subset = nCount_RNA < maxUMI & nFeature_RNA > minGene & nFeature_RNA < maxGene & percent.mt < pctMT)
 data <- NormalizeData(data) %>% FindVariableFeatures(nfeatures = ceiling(nrow(data@assays$RNA) * 0.3)) %>% ScaleData()
 data <- RunPCA(data, features = VariableFeatures(object = data), reduction.name = "pca")
