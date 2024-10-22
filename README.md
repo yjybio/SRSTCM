@@ -51,26 +51,26 @@ copykat.prediction <- data@assays$RNA@counts[ ,which(colnames(data@assays$RNA@co
 ```
 Step 4: running ScrSTCs
 --
-Taking colorectal cancer as an example, the most important input data is the malignant cells obtained in the previous step, and the malignant cells mentioned above are extracted from the preprocessed single-cell data and recorded as copykat-prediction.<br>
-Then, the corresponding aging marker genes in colorectal cancer were extracted from the data, and senescent tumor cells in malignant cells were identified according to the maximum likelihood function principle according to the multinomial distribution model of colorectal cancer constructed by us.<br>
+Taking Ovarian cancer as an example, the most important input data is the malignant cells obtained in the previous step, and the malignant cells mentioned above are extracted from the preprocessed single-cell data and recorded as copykat-prediction.<br>
+Then, the corresponding aging marker genes in Ovarian cancer were extracted from the data, and senescent tumor cells in malignant cells were identified according to the maximum likelihood function principle according to the multinomial distribution model of Ovarian cancer constructed by us.<br>
 
 Now run the code:
 ```R
-copykat.prediction <- copykat.prediction[which(rownames(copykat.prediction) %in% CRC.aging.gene), ]
-dir <- which(CRC.aging.gene %in% rownames(copykat.prediction))
+copykat.prediction <- copykat.prediction[which(rownames(copykat.prediction) %in% OVCA.aging.gene), ]
+dir <- which(OVCA.aging.gene %in% rownames(copykat.prediction))
 if (length(dir) == 0 || length(dir) == 1)
      stop("too few aging marker genes;cannot be calculated")
 if (length(dir) > 1) {
-     copykat.prediction <- copykat.prediction[match(CRC.aging.gene[dir], rownames(copykat.prediction)), ]
-     CRC.aging.average <- CRC.aging.average[dir]
-     CRC.no.aging.average <- CRC.no.aging.average[dir]
-     p.no.aging <- ( CRC.no.aging.average + 1 ) / ( sum(CRC.no.aging.average) + length(CRC.no.aging.average) )
-     p.aging <- ( CRC.aging.average + 1 ) / ( sum(CRC.aging.average) + length(CRC.aging.average) )
-     q.CRC <- apply(copykat.prediction, 2, q)
+     copykat.prediction <- copykat.prediction[match(OVCA.aging.gene[dir], rownames(copykat.prediction)), ]
+     OVCA.aging.average <- OVCA.aging.average[dir]
+     OVCA.no.aging.average <- OVCA.no.aging.average[dir]
+     p.no.aging <- ( OVCA.no.aging.average + 1 ) / ( sum(OVCA.no.aging.average) + length(OVCA.no.aging.average) )
+     p.aging <- ( OVCA.aging.average + 1 ) / ( sum(OVCA.aging.average) + length(OVCA.aging.average) )
+     q.OVCA <- apply(copykat.prediction, 2, q)
      aging <- c()
-     for (i in 1 : ncol(q.CRC)) {
-          if (argmax(p.aging, q.CRC[, i]) > argmax(p.no.aging, q.CRC[, i])) {
-                 aging <- c(aging, colnames(q.CRC)[i])
+     for (i in 1 : ncol(q.OVCA)) {
+          if (argmax(p.aging, q.OVCA[, i]) > argmax(p.no.aging, q.OVCA[, i])) {
+                 aging <- c(aging, colnames(q.OVCA)[i])
            }
      }
 }
@@ -111,21 +111,21 @@ Step 5: if the data type is bulk, the aging score is calculated
 --
 For bulk data, we can calculate the aging score of each sample according to the multinomial distribution model. The likelihood function of the aging multinomial distribution model corresponding to each sample is used as the score to evaluate the aging degree of the sample.<br>
 
-Take colorectal cancer, for example:<br>
+Take skin cutaneous melanoma, for example:<br>
 ```R
-data <- data[which(rownames(data) %in% CRC.aging.gene), ]
-dir <- which(CRC.aging.gene %in% rownames(data))
+data <- data[which(rownames(data) %in% SKCM.aging.gene), ]
+dir <- which(SKCM.aging.gene %in% rownames(data))
 if (length(dir) == 0 || length(dir) == 1)
 	stop("too few aging marker genes;cannot be calculated")
 if (length(dir) > 1) {
-        data <- data[match(CRC.aging.gene[dir], rownames(data)), ]
-        CRC.aging.average <- CRC.aging.average[dir]
-        p.aging <- ( CRC.aging.average + 1 ) / ( sum(CRC.aging.average) + length(CRC.aging.average) )
-        q.CRC <- apply(data, 2, q)
-        Aging.score <- matrix(nrow = ncol(q.CRC), ncol = 2)
-	for (i in 1 : ncol(q.CRC)) {
-             Aging.score[i, 1] <- colnames(q.CRC)[i]
-             Aging.score[i, 2] <- argmax(p.aging, q.CRC[, i])
+        data <- data[match(SKCM.aging.gene[dir], rownames(data)), ]
+        SKCM.aging.average <- SKCM.aging.average[dir]
+        p.aging <- ( SKCM.aging.average + 1 ) / ( sum(SKCM.aging.average) + length(SKCM.aging.average) )
+        q.SKCM <- apply(data, 2, q)
+        Aging.score <- matrix(nrow = ncol(q.SKCM), ncol = 2)
+	for (i in 1 : ncol(q.SKCM)) {
+             Aging.score[i, 1] <- colnames(q.SKCM)[i]
+             Aging.score[i, 2] <- argmax(p.aging, q.SKCM[, i])
          }
         colnames(Aging.score) <- c("sample", "aging_score")
 	Aging.score <- as.data.frame(Aging.score)
