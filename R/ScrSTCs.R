@@ -57,8 +57,6 @@ ScrSTCs <- function (data, cancer, type, survival, multi.sample = "FALSE",
   }
   if (type == "sc") {
     print("Step1: Single cell data reading and quality control ...")
-    data[["percent.mt"]] <- PercentageFeatureSet(data, pattern = "^MT-")
-    data[["percent.rb"]] <- PercentageFeatureSet(data, pattern = "^RP[SL]")
     if (multi.sample == "TRUE") {
       data <- subset(data, subset = nCount_RNA < maxUMI & nFeature_RNA > minGene &
                        nFeature_RNA < maxGene & percent.mt < pctMT)
