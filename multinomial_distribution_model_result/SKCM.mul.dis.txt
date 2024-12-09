@@ -1,4 +1,4 @@
-"SKCM.aging.gene" "SKCM.aging.average" "SKCM.no.aging.average"
+"SKCM.sen.gene" "SKCM.sen.average" "SKCM.no.sen.average"
 "AREG" 4.534673 4.853115
 "ITGA2" 4.502458 4.88515
 "PLAUR" 5.453566 6.676557
