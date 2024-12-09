@@ -1,4 +1,4 @@
-"OVCA.aging.gene" "OVCA.aging.average" "OVCA.no.aging.average"
+"OVCA.sen.gene" "OVCA.sen.average" "OVCA.no.sen.average"
 "CXCL8" 2.438247 5.530194
 "CXCL1" 7.535038 10.03251
 "PLAU" 4.541467 6.684943
