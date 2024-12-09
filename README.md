@@ -2,6 +2,8 @@ ScrSTCs: Inference of human senescent tumor cells from high-throughput single ce
 ===
 More and more evidence shows that senescent tumor cells (STCs) can induce immunosuppression of cancer and promote the development of tumor. It is therefore critical to understand how senescent tumor cells contribute to disease progression by identifying senescent tumor cells in a disease or condition. To address this problem, we propose ScrSTCs, a supervised senescent tumor cell identifier that can accurately identify senescent tumor cells in newly sequenced cancer single-cell data. ScrSTCs annotates senescent tumor cells in cancer single-cell data. We use a multinomial distribution model and maximum likelihood function estimation to develop ScrSTCs for accurate, rapid, and robust identification of senescent tumor cells. Due to the limited senescence induced cancer RNA-seq dataset, we highlighted senescent tumor cells in the single cell transcriptomic data for six cancers: lung cancer, colorectal cancer, breast cancer, ovarian cancer, hepatocellular carcinoma, and cutaneous melanoma. In addition, for bulk data, we can calculate the aging score of each sample according to the multinomial distribution model. The likelihood function of the aging multinomial distribution model corresponding to each sample is used as the score to evaluate the aging degree of the sample. In this vignette, we will predict senescent tumor cells by calculating 10X single-cell RNA data using the {ScrSTCs} R package.<br>
 
+![image text](https://github.com/yjybio/SRSTCM/blob/master/workflows/workflows.png)
+
 Step 1: installation
 --
 Installing ScrSTCs from GitHub <br>
