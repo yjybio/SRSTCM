@@ -131,7 +131,7 @@ if (length(dir) > 1) {
 	Senescence.score <- as.data.frame(Senescence.score)
 }
 ```
-I can save the aging score.
+I can save the senescence score.
 ```R
 write.table(Senescence.score, paste(cancer, "_senescence_score.txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
 ```
