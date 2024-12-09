@@ -1,4 +1,4 @@
-"LIHC.aging.gene" "LIHC.aging.average" "LIHC.no.aging.average"
+"LIHC.sen.gene" "LIHC.sen.average" "LIHC.no.sen.average"
 "CCL5" 3.015722 3.049556
 "FGF1" 2.996278 3.043944
 "ANGPT1" 4.192444 4.585722
