@@ -3,7 +3,7 @@
 #' @param data raw data matrix; if the data is scRNA-seq, genes in rows; cell names in columns; if the data is bulk, genes in rows; sample names in columns.
 #' @param cancer short for cancer: "LUNG";"LIHC";"BRCA";"OVCA";"CRC";SKCM".
 #' @param type if the data are scRNA-seq, put "sc"; if the data are bulk, put "bulk".
-#' @param survival survival data; if the survival data is not empty, survival data is a data frame; sample names, OS, and OS.time in columns.
+#' @param survival survival data; if the survival data is not empty, survival data is a data frame; if the survival data is empty, input NULL; sample names, OS, and OS.time in columns.
 #' @param multi.sample if scRNA-seq is a single sample, put "FALSE"; if scRNA-seq is multi-sample integration, put "TRUE".
 #' @param minGene the minimum number of genes in a cell.
 #' @param maxGene the maximum number of genes in a cell.
