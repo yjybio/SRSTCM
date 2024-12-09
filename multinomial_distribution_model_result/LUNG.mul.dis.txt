@@ -1,4 +1,4 @@
-"LUNG.aging.gene" "LUNG.aging.average" "LUNG.no.aging.average"
+"LUNG.sen.gene" "LUNG.sen.average" "LUNG.no.sen.average"
 "CCL5" 4.516653 3.499048
 "FGF1" 7.11344 8.224109
 "ANGPT1" 7.028329 9.342742
