@@ -1,4 +1,4 @@
-"CRC.aging.gene" "CRC.aging.average" "CRC.no.aging.average"
+"CRC.sen.gene" "CRC.sen.average" "CRC.no.sen.average"
 "ANG" 1.525989 1.762392
 "ANGPTL4" 0.1722437 0.05609277
 "AREG" 3.803822 1.655296
